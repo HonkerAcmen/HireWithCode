@@ -20,6 +20,15 @@
 - 前端技术栈使用Vue3+ElementPlus+Pinia+VueRouter，全程使用ESLint进行代码规范，prettier进行代码格式化。
 - 后端技术栈使用Nest.js，全程使用TS进行开发，ESLint进行代码规范。数据库使用mysql。
 - 全程使用Docker进行容器化部署，可以多平台运行。
+  
+### 3、运行方式
+
+     1. 启动你的docker服务
+     2. npm install -g pnpm
+     3. 打开项目主目录
+     4. cd backend && pnpm i && cd ../frontend/ && pnpm i && pnpm build && cd ../
+     5. 运行dockerTool.sh
+     6. 选择 选项2 即可运行
 
 ### 3、写项目时的精神状态
 
