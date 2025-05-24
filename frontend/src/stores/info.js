@@ -11,7 +11,7 @@ export const useInfoStroe = defineStore('infoStroe', () => {
       infoDatas.value = res.data
     } catch (error) {
       console.log(error)
-      ElMessage.error('获取失败')
+      ElMessage.error(error.response.data.message)
     }
   }
   const CreateInfo = async (email, github_id) => {
@@ -21,7 +21,7 @@ export const useInfoStroe = defineStore('infoStroe', () => {
       GetAllInfo()
     } catch (error) {
       console.log(error)
-      ElMessage.error('获取失败')
+      ElMessage.error(error.response.data.message)
     }
   }
 
