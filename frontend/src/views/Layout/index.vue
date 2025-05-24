@@ -41,7 +41,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   background-color: #fff;
-
+  box-shadow: --el-box-shadow-lighter;
   height: 600px;
   width: 600px;
   border-radius: 30px;
