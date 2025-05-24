@@ -28,4 +28,17 @@ export class InfoController {
       project_online_add,
     );
   }
+
+  @Post('/set')
+  async setInfoByGithubId(
+    @Body('github_id') github_id: string,
+    @Body('github_pj_add') github_pj_add: string,
+    @Body('project_online_add') project_online_add: string,
+  ) {
+    return await this.infoService.setInfoByGithubId(
+      github_id,
+      github_pj_add,
+      project_online_add,
+    );
+  }
 }

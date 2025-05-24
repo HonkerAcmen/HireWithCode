@@ -28,6 +28,9 @@ let InfoController = class InfoController {
     async create(email, github_id, github_pj_add, project_online_add) {
         return await this.infoService.create(email, github_id, github_pj_add, project_online_add);
     }
+    async setInfoByGithubId(github_id, github_pj_add, project_online_add) {
+        return await this.infoService.setInfoByGithubId(github_id, github_pj_add, project_online_add);
+    }
 };
 exports.InfoController = InfoController;
 __decorate([
@@ -53,6 +56,15 @@ __decorate([
     __metadata("design:paramtypes", [String, String, String, String]),
     __metadata("design:returntype", Promise)
 ], InfoController.prototype, "create", null);
+__decorate([
+    (0, common_1.Post)('/set'),
+    __param(0, (0, common_1.Body)('github_id')),
+    __param(1, (0, common_1.Body)('github_pj_add')),
+    __param(2, (0, common_1.Body)('project_online_add')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:returntype", Promise)
+], InfoController.prototype, "setInfoByGithubId", null);
 exports.InfoController = InfoController = __decorate([
     (0, common_1.Controller)('info'),
     __metadata("design:paramtypes", [info_service_1.InfoService])

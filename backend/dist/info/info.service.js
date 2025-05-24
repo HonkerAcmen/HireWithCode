@@ -26,6 +26,10 @@ let InfoService = class InfoService {
         return this.infoRepository.find();
     }
     async create(email, github_id, github_pj_add, project_online_add) {
+        const res = await this.infoRepository.findOneBy({ github_id });
+        if (res) {
+            throw new common_1.HttpException('github id已存在', 400);
+        }
         const newinfo = {
             email: email,
             github_id: github_id,
@@ -47,18 +51,16 @@ let InfoService = class InfoService {
             throw new common_1.HttpException('创建失败', 500);
         }
     }
-    async setInfoById(id, email, github_id, github_pj_add, project_online_add) {
-        const res = await this.infoRepository.findOneBy({ id });
+    async setInfoByGithubId(github_id, github_pj_add, project_online_add) {
+        const res = await this.infoRepository.findOneBy({ github_id });
         if (!res) {
-            throw new common_1.HttpException('没有此id的数据', 404);
+            throw new common_1.HttpException('github id不存在', 404);
         }
-        res.email = email;
-        res.github_id = github_id;
         res.github_pj_add = github_pj_add;
         res.project_online_add = project_online_add;
         const data = this.infoRepository.create(res);
         try {
-            this.infoRepository.save(data);
+            await this.infoRepository.save(data);
             return {
                 code: 1,
                 msg: '修改成功',
@@ -67,7 +69,7 @@ let InfoService = class InfoService {
         }
         catch (err) {
             console.log(err);
-            throw new common_1.HttpException('修改失败', 500);
+            throw new common_1.HttpException('修改失败', 400);
         }
     }
 };

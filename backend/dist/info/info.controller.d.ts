@@ -9,4 +9,9 @@ export declare class InfoController {
         msg: string;
         data: string;
     }>;
+    setInfoByGithubId(github_id: string, github_pj_add: string, project_online_add: string): Promise<{
+        code: number;
+        msg: string;
+        data: string;
+    }>;
 }
